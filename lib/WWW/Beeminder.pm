@@ -7,6 +7,7 @@ use namespace::autoclean;
 has base_url => ( is => 'rw', isa => 'Str', default => 'https://www.beeminder.com' );
 
 has username => ( is => 'rw', isa => 'Str', default => '' );
+has goal     => ( is => 'rw', isa => 'Str', default => '' );
 
 our $VERSION = '0.01';
 
