@@ -14,12 +14,28 @@ our $VERSION = '0.01';
 sub add_data {
     my ($self, $data) = @_;
 
-    unless ($self->username) {
-        die "You must specify a username before adding data";
+
+    $self->username or die "You must specify a username before adding data";
+
+    $self->goal or die "You must specify a goal before adding data";
+
+    my $post_url = sprintf("%s/%s/goals/%s/datapoints/create_all",
+        $self->base_url,
+        $self->username,
+        $self->goal,
+    );
+
+    # specify a default origin if none was provided
+    unless ($data->{origin}) {
+        $data->{origin} ||= $self->username . '_api';
     }
+
 
     my $mech = WWW::Mechanize->new;
     my $r    = $mech->post( $self->base_url(), $data );
+
+    # crappy, but just return the LWP response for now
+    return $r;
 }
 
 
