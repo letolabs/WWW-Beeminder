@@ -5,7 +5,6 @@ use WWW::Mechanize;
 use namespace::autoclean;
 
 has base_url => ( is => 'rw', isa => 'Str', default => 'http://beta.beeminder.com' );
-
 has username => ( is => 'rw', isa => 'Str', default => '' );
 has goal     => ( is => 'rw', isa => 'Str', default => '' );
 
@@ -30,13 +29,11 @@ sub add_data {
     # specify a default origin if none was provided
     $data->{origin} ||= $self->username . '_api';
 
-
     my $mech = WWW::Mechanize->new;
 
     $mech->add_header('content-type' => 'application/x-www-form-urlencoded');
 
     my $r    = $mech->post( $self->base_url(), $data);
-
 
     # crappy, but just return the LWP response for now
     return $r;
