@@ -10,10 +10,9 @@ my $builder = Module::Build->new(
     dist_version_from   => 'lib/WWW/Beeminder.pm',
     include_dirs        => '',
     build_requires => {
-        'Test::More'      => '0.88',
-        'Test::Exception' => 0,
+        'Test::Most'      => '0.25',
     },
-    configure_requires => { 'Module::Build' => 0.38 },
+    configure_requires => { 'Module::Build' => '0.4005' },
     requires => {
     },
     add_to_cleanup      => [ 'WWW-Beeminder*' ],

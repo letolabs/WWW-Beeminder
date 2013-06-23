@@ -1,6 +1,6 @@
 #!perl
 
-use Test::More;
+use Test::Most;
 use WWW::Beeminder;
 use Data::Dumper;
 
